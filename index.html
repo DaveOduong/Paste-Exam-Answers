@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dynamic Exam Answer Key Matrix</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 20px;
+    background: #000;
+    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.control-panel {
+    max-width: 720px;
+    width: 100%;
+    background: #0a0a0a;
+    border-radius: 20px;
+    border: 1px solid #222;
+    padding: 25px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #fff;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+    min-height: 60px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+textarea:focus {
+    border-color: #fff;
+}
+
+.btn-row {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+button {
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 22px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: #ccc;
+}
+
+button.secondary {
+    background: #1a1a1a;
+    color: #aaa;
+    border: 1px solid #333;
+}
+
+button.secondary:hover {
+    background: #252525;
+    color: #fff;
+}
+
+.table-wrapper {
+    padding: 25px;
+    background: #0a0a0a;
+    border-radius: 20px;
+    border: 1px solid #222;
+    width: fit-content;
+    display: none;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 12px;
+}
+
+td {
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 12px;
+    width: 85px;
+    height: 85px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+td:hover {
+    background: #222;
+    border-color: #fff;
+    transform: translateY(-3px);
+}
+
+.num {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.ans {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+h2 {
+    text-align: center;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.text-responses {
+    max-width: 720px;
+    width: 100%;
+    background: #0a0a0a;
+    border-radius: 20px;
+    border: 1px solid #222;
+    padding: 25px;
+    box-sizing: border-box;
+    display: none;
+}
+
+.text-responses ol {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.text-responses li {
+    margin-bottom: 18px;
+    color: #ccc;
+    line-height: 1.5;
+    white-space: pre-line;
+}
+
+.text-responses strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 4px;
+}
+</style>
+</head>
+<body>
+
+<div class="control-panel">
+    <h2>Paste Exam Answers</h2>
+
+    <div class="input-group">
+        <label for="inputA">Section A: Multiple Choice (e.g., A B C D or 1.A 2.B)</label>
+        <textarea id="inputA" placeholder="Paste answers separated by spaces, commas, or new lines..."></textarea>
+    </div>
+
+    <div class="input-group">
+        <label for="inputB">Section B: True or False (e.g., T F T T or 1.F 2.T)</label>
+        <textarea id="inputB" placeholder="Paste T/F values..."></textarea>
+    </div>
+
+    <div class="input-group">
+        <label for="inputC">Section C: Matching (e.g., H G J A B or 1-H 2-G)</label>
+        <textarea id="inputC" placeholder="Paste matching letters..."></textarea>
+    </div>
+
+    <div class="input-group">
+        <label for="inputD">Section D: Short Answers (Separate each item with a blank line; first line = question, next line(s) = answer)</label>
+        <textarea id="inputD" rows="4" placeholder="What is the question?&#10;Your answer goes right below it.&#10;&#10;Second question?&#10;Second answer."></textarea>
+    </div>
+
+    <div class="btn-row">
+        <button class="secondary" onclick="clearAll()">Clear</button>
+        <button onclick="renderAll()">Generate Matrix</button>
+    </div>
+</div>
+
+<div class="table-wrapper" id="wrapA">
+    <h2>Section A: Multiple Choice</h2>
+    <table id="tableA"></table>
+</div>
+
+<div class="table-wrapper" id="wrapB">
+    <h2>Section B: True or False</h2>
+    <table id="tableB"></table>
+</div>
+
+<div class="table-wrapper" id="wrapC">
+    <h2>Section C: Matching</h2>
+    <table id="tableC"></table>
+</div>
+
+<div class="text-responses" id="wrapD">
+    <h2>Section D: Short Answers</h2>
+    <ol id="listD"></ol>
+</div>
+
+<script>
+const colsPerRow = 7;
+
+// Parses raw pasted text into [number, answer] pairs
+// Handles formats like: "A B C", "A, B, C", "1. A  2. B", "1)A 2)B", "1-A\n2-B"
+function parseTokens(rawText) {
+    const trimmed = rawText.trim();
+    if (!trimmed) return [];
+
+    // Strip leading question numbers like "1.", "1)", "1-", "#1", "1:"
+    const cleaned = trimmed.replace(/(?:^|[\s,;]+)#?\d+\s*[\.\)\-:]\s*/g, " ");
+    const tokens = cleaned
+        .split(/[\s,;]+/)
+        .map(t => t.trim().toUpperCase())
+        .filter(Boolean);
+
+    return tokens.map((ans, idx) => [String(idx + 1), ans]);
+}
+
+function buildGrid(matrixData, targetTableId, wrapperId) {
+    const table = document.getElementById(targetTableId);
+    const wrapper = document.getElementById(wrapperId);
+    table.innerHTML = "";
+
+    if (matrixData.length === 0) {
+        wrapper.style.display = "none";
+        return;
+    }
+
+    wrapper.style.display = "block";
+    const totalRows = Math.ceil(matrixData.length / colsPerRow);
+
+    for (let r = 0; r < totalRows; r++) {
+        const row = document.createElement("tr");
+
+        for (let c = 0; c < colsPerRow; c++) {
+            const index = r * colsPerRow + c;
+
+            if (index < matrixData.length) {
+                const cell = document.createElement("td");
+                cell.innerHTML = `
+                    <span class="num">#${matrixData[index][0]}</span>
+                    <span class="ans">${matrixData[index][1]}</span>
+                `;
+                row.appendChild(cell);
+            } else {
+                const emptyCell = document.createElement("td");
+                emptyCell.style.border = "none";
+                emptyCell.style.background = "transparent";
+                row.appendChild(emptyCell);
+            }
+        }
+        table.appendChild(row);
+    }
+}
+
+function buildShortAnswers(rawText) {
+    const list = document.getElementById("listD");
+    const wrapper = document.getElementById("wrapD");
+    list.innerHTML = "";
+
+    const trimmed = rawText.trim();
+    if (!trimmed) {
+        wrapper.style.display = "none";
+        return;
+    }
+
+    wrapper.style.display = "block";
+    const blocks = trimmed.split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+
+    blocks.forEach(block => {
+        const lines = block.split("\n").map(l => l.trim()).filter(Boolean);
+        const li = document.createElement("li");
+
+        if (lines.length > 1) {
+            const question = lines[0].replace(/^\d+[\.\)]\s*/, "");
+            const answer = lines.slice(1).join("\n");
+            const strong = document.createElement("strong");
+            strong.textContent = question;
+            li.appendChild(strong);
+            li.appendChild(document.createTextNode(answer));
+        } else {
+            li.textContent = lines[0].replace(/^\d+[\.\)]\s*/, "");
+        }
+
+        list.appendChild(li);
+    });
+}
+
+function renderAll() {
+    buildGrid(parseTokens(document.getElementById("inputA").value), "tableA", "wrapA");
+    buildGrid(parseTokens(document.getElementById("inputB").value), "tableB", "wrapB");
+    buildGrid(parseTokens(document.getElementById("inputC").value), "tableC", "wrapC");
+    buildShortAnswers(document.getElementById("inputD").value);
+}
+
+function clearAll() {
+    ["inputA", "inputB", "inputC", "inputD"].forEach(id => {
+        document.getElementById(id).value = "";
+    });
+    renderAll();
+}
+
+// Live-update as soon as text is pasted or typed
+["inputA", "inputB", "inputC", "inputD"].forEach(id => {
+    document.getElementById(id).addEventListener("input", renderAll);
+});
+</script>
+
+</body>
+</html>
