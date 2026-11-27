@@ -6,29 +6,235 @@
 <title>Dynamic Exam Answer Key Matrix</title>
 
 <style>
+:root {
+    --bg: #000000;
+    --panel: #0a0a0a;
+    --card: #151515;
+    --card-hover: #222222;
+    --border: #222222;
+    --card-border: #333333;
+    --text: #ffffff;
+    --muted: #888888;
+    --sub-muted: #666666;
+    --accent: #ffffff;
+    --accent-text: #000000;
+    --body-text: #cccccc;
+}
+
+/* Light Mode */
+body.theme-light {
+    --bg: #f4f5f7;
+    --panel: #ffffff;
+    --card: #f8f9fa;
+    --card-hover: #e9ecef;
+    --border: #dee2e6;
+    --card-border: #ced4da;
+    --text: #111111;
+    --muted: #555555;
+    --sub-muted: #777777;
+    --accent: #111111;
+    --accent-text: #ffffff;
+    --body-text: #333333;
+}
+
+/* ROYGBIV Themes */
+body.theme-red {
+    --bg: #140505;
+    --panel: #1f0808;
+    --card: #2e0d0d;
+    --card-hover: #421313;
+    --border: #4a1515;
+    --card-border: #6e1e1e;
+    --text: #ffe5e5;
+    --muted: #ff8a8a;
+    --sub-muted: #d45d5d;
+    --accent: #ff4d4d;
+    --accent-text: #140505;
+    --body-text: #ffcccc;
+}
+
+body.theme-orange {
+    --bg: #140b03;
+    --panel: #211205;
+    --card: #331c08;
+    --card-hover: #4a280b;
+    --border: #522d0c;
+    --card-border: #7a4312;
+    --text: #fff0e0;
+    --muted: #ffb366;
+    --sub-muted: #d98236;
+    --accent: #ff8c1a;
+    --accent-text: #140b03;
+    --body-text: #ffe0c2;
+}
+
+body.theme-yellow {
+    --bg: #141203;
+    --panel: #211e05;
+    --card: #332e08;
+    --card-hover: #4a420b;
+    --border: #52490c;
+    --card-border: #7a6d12;
+    --text: #fffce0;
+    --muted: #ffe666;
+    --sub-muted: #ccb233;
+    --accent: #ffd60a;
+    --accent-text: #141203;
+    --body-text: #fff8c2;
+}
+
+body.theme-green {
+    --bg: #041408;
+    --panel: #07210d;
+    --card: #0c3315;
+    --card-hover: #124a1f;
+    --border: #145222;
+    --card-border: #1e7a33;
+    --text: #e5ffeb;
+    --muted: #7aff99;
+    --sub-muted: #47cc66;
+    --accent: #2ecc71;
+    --accent-text: #041408;
+    --body-text: #c2ffd0;
+}
+
+body.theme-blue {
+    --bg: #040d17;
+    --panel: #071729;
+    --card: #0c2542;
+    --card-hover: #123661;
+    --border: #153e6e;
+    --card-border: #1f5ba1;
+    --text: #e5f2ff;
+    --muted: #7ab8ff;
+    --sub-muted: #4d8fd9;
+    --accent: #3399ff;
+    --accent-text: #040d17;
+    --body-text: #cce5ff;
+}
+
+body.theme-indigo {
+    --bg: #0a0517;
+    --panel: #120929;
+    --card: #1d0f42;
+    --card-hover: #2b1661;
+    --border: #31196e;
+    --card-border: #4825a1;
+    --text: #efe5ff;
+    --muted: #b08aff;
+    --sub-muted: #825cd9;
+    --accent: #7b4dff;
+    --accent-text: #ffffff;
+    --body-text: #dfd1ff;
+}
+
+body.theme-violet {
+    --bg: #140517;
+    --panel: #210926;
+    --card: #330e3b;
+    --card-hover: #4a1557;
+    --border: #521761;
+    --card-border: #7a2291;
+    --text: #fce5ff;
+    --muted: #f08aff;
+    --sub-muted: #c75cd6;
+    --accent: #d946ef;
+    --accent-text: #140517;
+    --body-text: #f7ccff;
+}
+
 html, body {
     margin: 0;
     padding: 20px;
-    background: #000;
-    color: white;
+    background: var(--bg);
+    color: var(--text);
     font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.view-section {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .control-panel {
     max-width: 720px;
     width: 100%;
-    background: #0a0a0a;
+    background: var(--panel);
     border-radius: 20px;
-    border: 1px solid #222;
+    border: 1px solid var(--border);
     padding: 25px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 18px;
+}
+
+.top-bar {
+    max-width: 720px;
+    width: 100%;
+    background: var(--panel);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    padding: 16px 22px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.theme-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: var(--card);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.theme-btn.active {
+    background: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+}
+
+.swatch {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
 }
 
 .input-group {
@@ -39,7 +245,7 @@ html, body {
 
 label {
     font-size: 0.8rem;
-    color: #888;
+    color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bold;
@@ -47,10 +253,10 @@ label {
 
 textarea {
     width: 100%;
-    background: #151515;
-    border: 1px solid #333;
+    background: var(--card);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
-    color: #fff;
+    color: var(--text);
     padding: 12px;
     font-family: inherit;
     font-size: 0.95rem;
@@ -62,21 +268,22 @@ textarea {
 }
 
 textarea:focus {
-    border-color: #fff;
+    border-color: var(--accent);
 }
 
 .btn-row {
     display: flex;
     gap: 12px;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
-button {
-    background: #fff;
-    color: #000;
+button.action-btn {
+    background: var(--accent);
+    color: var(--accent-text);
     border: none;
     border-radius: 10px;
-    padding: 10px 22px;
+    padding: 10px 20px;
     font-weight: 800;
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -85,26 +292,27 @@ button {
     transition: all 0.2s ease;
 }
 
-button:hover {
-    background: #ccc;
+button.action-btn:hover {
+    opacity: 0.85;
 }
 
-button.secondary {
-    background: #1a1a1a;
-    color: #aaa;
-    border: 1px solid #333;
+button.action-btn.secondary {
+    background: var(--card);
+    color: var(--muted);
+    border: 1px solid var(--card-border);
 }
 
-button.secondary:hover {
-    background: #252525;
-    color: #fff;
+button.action-btn.secondary:hover {
+    background: var(--card-hover);
+    color: var(--text);
+    opacity: 1;
 }
 
 .table-wrapper {
     padding: 25px;
-    background: #0a0a0a;
+    background: var(--panel);
     border-radius: 20px;
-    border: 1px solid #222;
+    border: 1px solid var(--border);
     width: fit-content;
     display: none;
 }
@@ -115,8 +323,8 @@ table {
 }
 
 td {
-    background: #151515;
-    border: 1px solid #333;
+    background: var(--card);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     width: 85px;
     height: 85px;
@@ -125,15 +333,15 @@ td {
 }
 
 td:hover {
-    background: #222;
-    border-color: #fff;
+    background: var(--card-hover);
+    border-color: var(--accent);
     transform: translateY(-3px);
 }
 
 .num {
     display: block;
     font-size: 0.75rem;
-    color: #666;
+    color: var(--sub-muted);
     font-weight: bold;
     margin-bottom: 2px;
 }
@@ -142,12 +350,12 @@ td:hover {
     display: block;
     font-size: 2rem;
     font-weight: 900;
-    color: #fff;
+    color: var(--text);
 }
 
 h2 {
     text-align: center;
-    color: #888;
+    color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 4px;
     margin-top: 0;
@@ -158,9 +366,9 @@ h2 {
 .text-responses {
     max-width: 720px;
     width: 100%;
-    background: #0a0a0a;
+    background: var(--panel);
     border-radius: 20px;
-    border: 1px solid #222;
+    border: 1px solid var(--border);
     padding: 25px;
     box-sizing: border-box;
     display: none;
@@ -173,79 +381,98 @@ h2 {
 
 .text-responses li {
     margin-bottom: 18px;
-    color: #ccc;
+    color: var(--body-text);
     line-height: 1.5;
     white-space: pre-line;
 }
 
 .text-responses strong {
-    color: #fff;
+    color: var(--text);
     display: block;
     margin-bottom: 4px;
 }
 </style>
 </head>
-<body>
+<body class="theme-dark">
 
-<div class="control-panel">
-    <h2>Paste Exam Answers</h2>
+<!-- HOME VIEW (INPUTS) -->
+<div id="homeView" class="view-section">
+    <div class="control-panel">
+        <h2>Paste Exam Answers</h2>
 
-    <div class="input-group">
-        <label for="inputA">Section A: Multiple Choice (e.g., A B C D or 1.A 2.B)</label>
-        <textarea id="inputA" placeholder="Paste answers separated by spaces, commas, or new lines..."></textarea>
-    </div>
+        <div class="input-group">
+            <label for="inputA">Section A: Multiple Choice</label>
+            <textarea id="inputA" placeholder="Paste values (e.g., A B C D or 1.A 2.B)..."></textarea>
+        </div>
 
-    <div class="input-group">
-        <label for="inputB">Section B: True or False (e.g., T F T T or 1.F 2.T)</label>
-        <textarea id="inputB" placeholder="Paste T/F values..."></textarea>
-    </div>
+        <div class="input-group">
+            <label for="inputB">Section B: True or False</label>
+            <textarea id="inputB" placeholder="Paste T/F values..."></textarea>
+        </div>
 
-    <div class="input-group">
-        <label for="inputC">Section C: Matching (e.g., H G J A B or 1-H 2-G)</label>
-        <textarea id="inputC" placeholder="Paste matching letters..."></textarea>
-    </div>
+        <div class="input-group">
+            <label for="inputC">Section C: Matching</label>
+            <textarea id="inputC" placeholder="Paste matching values..."></textarea>
+        </div>
 
-    <div class="input-group">
-        <label for="inputD">Section D: Short Answers (Separate each item with a blank line; first line = question, next line(s) = answer)</label>
-        <textarea id="inputD" rows="4" placeholder="What is the question?&#10;Your answer goes right below it.&#10;&#10;Second question?&#10;Second answer."></textarea>
-    </div>
+        <div class="input-group">
+            <label for="inputD">Section D: Short Answers (Separate items with a blank line; line 1 = question, line 2+ = answer)</label>
+            <textarea id="inputD" rows="4" placeholder="What is the question?&#10;Your answer goes right below it.&#10;&#10;Second question?&#10;Second answer."></textarea>
+        </div>
 
-    <div class="btn-row">
-        <button class="secondary" onclick="clearAll()">Clear</button>
-        <button onclick="renderAll()">Generate Matrix</button>
+        <div class="btn-row">
+            <button class="action-btn secondary" onclick="clearAll()">Clear</button>
+            <button class="action-btn" onclick="openAnswersView()">View Answers &rarr;</button>
+        </div>
     </div>
 </div>
 
-<div class="table-wrapper" id="wrapA">
-    <h2>Section A: Multiple Choice</h2>
-    <table id="tableA"></table>
-</div>
+<!-- ANSWERS VIEW (NEW TAB / SCREEN) -->
+<div id="answersView" class="view-section hidden">
+    <div class="top-bar">
+        <button class="action-btn secondary" onclick="goHome()">&larr; Back to Home</button>
 
-<div class="table-wrapper" id="wrapB">
-    <h2>Section B: True or False</h2>
-    <table id="tableB"></table>
-</div>
+        <div class="theme-bar" id="themeBar">
+            <button class="theme-btn active" data-theme="theme-dark" onclick="setTheme('theme-dark')">Dark</button>
+            <button class="theme-btn" data-theme="theme-light" onclick="setTheme('theme-light')">Light</button>
+            <button class="theme-btn" data-theme="theme-red" onclick="setTheme('theme-red')"><span class="swatch" style="background:#ff4d4d"></span>R</button>
+            <button class="theme-btn" data-theme="theme-orange" onclick="setTheme('theme-orange')"><span class="swatch" style="background:#ff8c1a"></span>O</button>
+            <button class="theme-btn" data-theme="theme-yellow" onclick="setTheme('theme-yellow')"><span class="swatch" style="background:#ffd60a"></span>Y</button>
+            <button class="theme-btn" data-theme="theme-green" onclick="setTheme('theme-green')"><span class="swatch" style="background:#2ecc71"></span>G</button>
+            <button class="theme-btn" data-theme="theme-blue" onclick="setTheme('theme-blue')"><span class="swatch" style="background:#3399ff"></span>B</button>
+            <button class="theme-btn" data-theme="theme-indigo" onclick="setTheme('theme-indigo')"><span class="swatch" style="background:#7b4dff"></span>I</button>
+            <button class="theme-btn" data-theme="theme-violet" onclick="setTheme('theme-violet')"><span class="swatch" style="background:#d946ef"></span>V</button>
+        </div>
+    </div>
 
-<div class="table-wrapper" id="wrapC">
-    <h2>Section C: Matching</h2>
-    <table id="tableC"></table>
-</div>
+    <div class="table-wrapper" id="wrapA">
+        <h2>Section A: Multiple Choice</h2>
+        <table id="tableA"></table>
+    </div>
 
-<div class="text-responses" id="wrapD">
-    <h2>Section D: Short Answers</h2>
-    <ol id="listD"></ol>
+    <div class="table-wrapper" id="wrapB">
+        <h2>Section B: True or False</h2>
+        <table id="tableB"></table>
+    </div>
+
+    <div class="table-wrapper" id="wrapC">
+        <h2>Section C: Matching</h2>
+        <table id="tableC"></table>
+    </div>
+
+    <div class="text-responses" id="wrapD">
+        <h2>Section D: Short Answers</h2>
+        <ol id="listD"></ol>
+    </div>
 </div>
 
 <script>
 const colsPerRow = 7;
 
-// Parses raw pasted text into [number, answer] pairs
-// Handles formats like: "A B C", "A, B, C", "1. A  2. B", "1)A 2)B", "1-A\n2-B"
 function parseTokens(rawText) {
     const trimmed = rawText.trim();
     if (!trimmed) return [];
 
-    // Strip leading question numbers like "1.", "1)", "1-", "#1", "1:"
     const cleaned = trimmed.replace(/(?:^|[\s,;]+)#?\d+\s*[\.\)\-:]\s*/g, " ");
     const tokens = cleaned
         .split(/[\s,;]+/)
@@ -332,17 +559,32 @@ function renderAll() {
     buildShortAnswers(document.getElementById("inputD").value);
 }
 
+function openAnswersView() {
+    renderAll();
+    document.getElementById("homeView").classList.add("hidden");
+    document.getElementById("answersView").classList.remove("hidden");
+    window.scrollTo(0, 0);
+}
+
+function goHome() {
+    document.getElementById("answersView").classList.add("hidden");
+    document.getElementById("homeView").classList.remove("hidden");
+    window.scrollTo(0, 0);
+}
+
+function setTheme(themeName) {
+    document.body.className = themeName;
+    document.querySelectorAll(".theme-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.theme === themeName);
+    });
+}
+
 function clearAll() {
     ["inputA", "inputB", "inputC", "inputD"].forEach(id => {
         document.getElementById(id).value = "";
     });
     renderAll();
 }
-
-// Live-update as soon as text is pasted or typed
-["inputA", "inputB", "inputC", "inputD"].forEach(id => {
-    document.getElementById(id).addEventListener("input", renderAll);
-});
 </script>
 
 </body>
