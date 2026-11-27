@@ -1,56 +1,59 @@
 # Dynamic Exam Answer Key Matrix
 
-A simple, browser-based tool that converts pasted examination answers into a visual answer matrix. It organizes multiple-choice, true/false, matching, and short-answer responses into a clean, easy-to-read layout.
+A browser-based application designed to organize examination answers into a clean, numbered visual matrix. It allows users to paste answers from different examination sections and view them in a separate, customizable results screen.
 
 ## Features
 
-- **Section A – Multiple Choice:** Displays answers in a numbered grid.
-- **Section B – True or False:** Organizes T/F responses into a visual matrix.
-- **Section C – Matching:** Displays matching answers in a numbered grid.
-- **Section D – Short Answers:** Organizes questions and their corresponding answers into a numbered list.
-- **Automatic Parsing:** Accepts answers separated by spaces, commas, semicolons, or new lines.
-- **Flexible Input:** Supports numbered formats such as `1. A`, `2. B`, and `1-A`.
-- **Live Updates:** Automatically generates the matrix as you type or paste answers.
-- **Clear Function:** Clears all input fields and generated results.
-- **Responsive Design:** Uses a clean, dark-themed interface.
+- **Multiple Choice (Section A):** Displays answers in a numbered grid.
+- **True or False (Section B):** Organizes T/F answers into a visual matrix.
+- **Matching (Section C):** Displays matching answers in a numbered grid.
+- **Short Answers (Section D):** Displays questions alongside their corresponding answers.
+- **Live Rendering:** Automatically processes pasted or typed answers.
+- **Separate Views:** Provides a Home screen for entering answers and an Answers screen for viewing results.
+- **Theme Customization:** Supports Dark, Light, and seven ROYGBIV colour themes.
+- **Navigation:** Allows users to move between the Home and Answers screens.
+- **Clear Function:** Clears all input fields.
+- **Responsive Interface:** Features a modern, clean design.
 
 ## Technologies Used
 
-- HTML5 – Page structure.
-- CSS3 – Styling, layout, and responsive design.
-- JavaScript – Input processing, answer parsing, and dynamic matrix generation.
+- HTML5 – Application structure.
+- CSS3 – Styling, layouts, animations, and colour themes.
+- JavaScript – Answer processing, dynamic rendering, and navigation.
 
-## How to Use
+## How to Run
 
 1. Download or clone the project.
-2. Open the `index.html` file in a web browser.
-3. Paste your examination answers into the appropriate sections.
-4. The answer matrix updates automatically.
-5. Alternatively, click **Generate Matrix** to generate the results manually.
-6. Click **Clear** to reset all sections.
+2. Locate the `index.html` file.
+3. Open it using a modern web browser.
+4. Paste your examination answers into the appropriate sections.
+5. Click **View Answers** to display the generated matrix.
+6. Use the theme buttons to customize the appearance.
+7. Click **Back to Home** to edit your answers.
 
 ## Input Examples
+<img width="453" height="395" alt="image" src="https://github.com/user-attachments/assets/d637c153-ed6d-4213-82f5-5247086ad78e" />
 
 
-<img width="370" height="416" alt="image" src="https://github.com/user-attachments/assets/bf7ea470-749e-4f62-9f75-521064a935f6" />
+<img width="485" height="329" alt="image" src="https://github.com/user-attachments/assets/008ab52a-af9c-435d-8a42-c282ca148bb0" />
 
 
-**Section A – Multiple Choice**
+### Section A – Multiple Choice
 ```text
-A B C D A C B
+A B C D A B C
 ```
 
-**Section B – True or False**
+### Section B – True or False
 ```text
 T F T T F T
 ```
 
-**Section C – Matching**
+### Section C – Matching
 ```text
 H G J A B C
 ```
 
-**Section D – Short Answers**
+### Section D – Short Answers
 ```text
 What is software engineering?
 The systematic application of engineering principles to software development.
@@ -69,21 +72,22 @@ Dynamic-Exam-Answer-Key-Matrix/
 
 ## Requirements
 
-- A modern web browser (Chrome, Firefox, Edge, etc.).
+- Modern web browser.
 - No installation required.
-- No internet connection required.
 - No external libraries or frameworks.
+- No internet connection required.
 
-## Key Functionality
+## Core JavaScript Functions
 
-The application uses JavaScript functions to:
-
-- Parse pasted answers into numbered tokens.
-- Generate dynamic HTML tables.
-- Organize short-answer questions and responses.
-- Update results automatically when inputs change.
-- Clear all fields and generated content.
+- `parseTokens()` – Processes and numbers pasted answers.
+- `buildGrid()` – Generates the answer matrices.
+- `buildShortAnswers()` – Organizes short-answer questions and responses.
+- `renderAll()` – Updates all generated results.
+- `openAnswersView()` – Opens the results screen.
+- `goHome()` – Returns to the input screen.
+- `setTheme()` – Changes the application's colour theme.
+- `clearAll()` – Clears all entered answers.
 
 ## License
 
-This project is available for educational and personal use.
+Free for educational and personal use.
