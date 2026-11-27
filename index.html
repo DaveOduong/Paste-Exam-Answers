@@ -11,14 +11,14 @@
     --panel: #0a0a0a;
     --card: #151515;
     --card-hover: #222222;
-    --border: #222222;
-    --card-border: #333333;
+    --border: #333333;
+    --card-border: #4a4a4a;
     --text: #ffffff;
-    --muted: #888888;
-    --sub-muted: #666666;
+    --muted: #aaaaaa;
+    --sub-muted: #888888;
     --accent: #ffffff;
     --accent-text: #000000;
-    --body-text: #cccccc;
+    --body-text: #eeeeee;
 }
 
 /* Light Mode */
@@ -27,14 +27,14 @@ body.theme-light {
     --panel: #ffffff;
     --card: #f8f9fa;
     --card-hover: #e9ecef;
-    --border: #dee2e6;
-    --card-border: #ced4da;
-    --text: #111111;
-    --muted: #555555;
-    --sub-muted: #777777;
-    --accent: #111111;
+    --border: #b8c2cc;
+    --card-border: #8d99ae;
+    --text: #0a0a0a;
+    --muted: #333333;
+    --sub-muted: #555555;
+    --accent: #0a0a0a;
     --accent-text: #ffffff;
-    --body-text: #333333;
+    --body-text: #111111;
 }
 
 /* ROYGBIV Themes */
@@ -43,11 +43,11 @@ body.theme-red {
     --panel: #1f0808;
     --card: #2e0d0d;
     --card-hover: #421313;
-    --border: #4a1515;
-    --card-border: #6e1e1e;
+    --border: #7a2222;
+    --card-border: #a32e2e;
     --text: #ffe5e5;
-    --muted: #ff8a8a;
-    --sub-muted: #d45d5d;
+    --muted: #ff9999;
+    --sub-muted: #e06666;
     --accent: #ff4d4d;
     --accent-text: #140505;
     --body-text: #ffcccc;
@@ -58,11 +58,11 @@ body.theme-orange {
     --panel: #211205;
     --card: #331c08;
     --card-hover: #4a280b;
-    --border: #522d0c;
-    --card-border: #7a4312;
+    --border: #8a4c14;
+    --card-border: #b8651b;
     --text: #fff0e0;
-    --muted: #ffb366;
-    --sub-muted: #d98236;
+    --muted: #ffba75;
+    --sub-muted: #e68a39;
     --accent: #ff8c1a;
     --accent-text: #140b03;
     --body-text: #ffe0c2;
@@ -73,11 +73,11 @@ body.theme-yellow {
     --panel: #211e05;
     --card: #332e08;
     --card-hover: #4a420b;
-    --border: #52490c;
-    --card-border: #7a6d12;
+    --border: #8a7b14;
+    --card-border: #b8a31b;
     --text: #fffce0;
-    --muted: #ffe666;
-    --sub-muted: #ccb233;
+    --muted: #ffea75;
+    --sub-muted: #d9be36;
     --accent: #ffd60a;
     --accent-text: #141203;
     --body-text: #fff8c2;
@@ -88,11 +88,11 @@ body.theme-green {
     --panel: #07210d;
     --card: #0c3315;
     --card-hover: #124a1f;
-    --border: #145222;
-    --card-border: #1e7a33;
+    --border: #228a3a;
+    --card-border: #2eb84d;
     --text: #e5ffeb;
-    --muted: #7aff99;
-    --sub-muted: #47cc66;
+    --muted: #85ffa3;
+    --sub-muted: #4dd96e;
     --accent: #2ecc71;
     --accent-text: #041408;
     --body-text: #c2ffd0;
@@ -103,11 +103,11 @@ body.theme-blue {
     --panel: #071729;
     --card: #0c2542;
     --card-hover: #123661;
-    --border: #153e6e;
-    --card-border: #1f5ba1;
+    --border: #2468b8;
+    --card-border: #3088f0;
     --text: #e5f2ff;
-    --muted: #7ab8ff;
-    --sub-muted: #4d8fd9;
+    --muted: #85c0ff;
+    --sub-muted: #5299e6;
     --accent: #3399ff;
     --accent-text: #040d17;
     --body-text: #cce5ff;
@@ -118,11 +118,11 @@ body.theme-indigo {
     --panel: #120929;
     --card: #1d0f42;
     --card-hover: #2b1661;
-    --border: #31196e;
-    --card-border: #4825a1;
+    --border: #522bb8;
+    --card-border: #6d3af0;
     --text: #efe5ff;
-    --muted: #b08aff;
-    --sub-muted: #825cd9;
+    --muted: #b894ff;
+    --sub-muted: #8c66e6;
     --accent: #7b4dff;
     --accent-text: #ffffff;
     --body-text: #dfd1ff;
@@ -133,85 +133,130 @@ body.theme-violet {
     --panel: #210926;
     --card: #330e3b;
     --card-hover: #4a1557;
-    --border: #521761;
-    --card-border: #7a2291;
+    --border: #8a27a3;
+    --card-border: #b835d9;
     --text: #fce5ff;
-    --muted: #f08aff;
-    --sub-muted: #c75cd6;
+    --muted: #f294ff;
+    --sub-muted: #d166e0;
     --accent: #d946ef;
     --accent-text: #140517;
     --body-text: #f7ccff;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     margin: 0;
-    padding: 20px;
+    padding: clamp(14px, 2vw, 28px);
+    width: 100%;
+    min-height: 100vh;
     background: var(--bg);
     color: var(--text);
     font-family: 'Segoe UI', Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: clamp(22px, 3vh, 36px);
     transition: background 0.25s ease, color 0.25s ease;
 }
 
 .view-section {
     width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: clamp(22px, 3vh, 36px);
 }
 
 .hidden {
     display: none !important;
 }
 
-.control-panel {
-    max-width: 720px;
+.control-panel,
+.top-bar,
+.table-wrapper,
+.text-responses {
     width: 100%;
     background: var(--panel);
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    padding: 25px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+    border-radius: 26px;
+    border: 3px solid var(--border);
+    padding: clamp(22px, 3vw, 40px);
 }
 
 .top-bar {
-    max-width: 720px;
-    width: 100%;
-    background: var(--panel);
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    padding: 16px 22px;
-    box-sizing: border-box;
+    position: sticky;
+    top: 12px;
+    z-index: 100;
+    padding: clamp(16px, 2vw, 24px) clamp(20px, 2.5vw, 34px);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
+    gap: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+}
+
+.scroll-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    background: var(--card);
+    border: 3px solid var(--card-border);
+    border-radius: 16px;
+    padding: 10px 16px;
+}
+
+.scroll-controls label {
+    font-size: clamp(0.85rem, 1.1vw, 1.1rem);
+    letter-spacing: 1px;
+    margin: 0;
+    color: var(--text);
+}
+
+.scroll-input {
+    width: 76px;
+    background: var(--panel);
+    border: 3px solid var(--card-border);
+    border-radius: 10px;
+    color: var(--text);
+    padding: 8px 8px;
+    font-size: clamp(0.95rem, 1.2vw, 1.2rem);
+    font-weight: 900;
+    text-align: center;
+    outline: none;
+}
+
+.scroll-input:focus {
+    border-color: var(--accent);
+}
+
+.scroll-status {
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+    font-weight: 800;
+    color: var(--muted);
+    min-width: 165px;
 }
 
 .theme-bar {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .theme-btn {
-    padding: 6px 12px;
-    font-size: 0.75rem;
-    border-radius: 8px;
-    border: 1px solid var(--card-border);
+    padding: 12px 18px;
+    font-size: clamp(0.95rem, 1.2vw, 1.2rem);
+    border-radius: 12px;
+    border: 3px solid var(--card-border);
     background: var(--card);
     color: var(--text);
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 900;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     transition: transform 0.15s ease, border-color 0.15s ease;
@@ -230,39 +275,44 @@ html, body {
 
 .swatch {
     display: inline-block;
-    width: 9px;
-    height: 9px;
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 7px;
     vertical-align: middle;
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
 }
 
 .input-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 12px;
 }
 
 label {
-    font-size: 0.8rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: bold;
+    letter-spacing: 2.5px;
+    font-weight: 900;
 }
 
 textarea {
     width: 100%;
     background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
+    border: 3px solid var(--card-border);
+    border-radius: 18px;
     color: var(--text);
-    padding: 12px;
+    padding: 20px;
     font-family: inherit;
-    font-size: 0.95rem;
+    font-size: clamp(1.2rem, 1.6vw, 1.6rem);
     resize: vertical;
-    min-height: 60px;
-    box-sizing: border-box;
+    min-height: 110px;
     outline: none;
     transition: border-color 0.2s ease;
 }
@@ -273,7 +323,7 @@ textarea:focus {
 
 .btn-row {
     display: flex;
-    gap: 12px;
+    gap: 18px;
     justify-content: flex-end;
     flex-wrap: wrap;
 }
@@ -281,11 +331,11 @@ textarea:focus {
 button.action-btn {
     background: var(--accent);
     color: var(--accent-text);
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-weight: 800;
-    font-size: 0.85rem;
+    border: 3px solid var(--accent);
+    border-radius: 14px;
+    padding: 14px 26px;
+    font-weight: 900;
+    font-size: clamp(1rem, 1.3vw, 1.3rem);
     text-transform: uppercase;
     letter-spacing: 1.5px;
     cursor: pointer;
@@ -293,103 +343,100 @@ button.action-btn {
 }
 
 button.action-btn:hover {
-    opacity: 0.85;
+    opacity: 0.88;
 }
 
 button.action-btn.secondary {
     background: var(--card);
-    color: var(--muted);
-    border: 1px solid var(--card-border);
+    color: var(--text);
+    border: 3px solid var(--card-border);
 }
 
 button.action-btn.secondary:hover {
     background: var(--card-hover);
-    color: var(--text);
+    border-color: var(--accent);
     opacity: 1;
 }
 
-.table-wrapper {
-    padding: 25px;
-    background: var(--panel);
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    width: fit-content;
+.table-wrapper,
+.text-responses {
     display: none;
 }
 
-table {
-    border-collapse: separate;
-    border-spacing: 12px;
+/* Edge-to-edge oversized responsive grid */
+.matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(145px, 16vw, 240px), 1fr));
+    gap: clamp(16px, 2vw, 28px);
+    width: 100%;
 }
 
-td {
+.tile {
     background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    width: 85px;
-    height: 85px;
+    border: 3px solid var(--card-border);
+    border-radius: 22px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
     text-align: center;
     transition: all 0.2s ease;
 }
 
-td:hover {
+.tile:hover {
     background: var(--card-hover);
     border-color: var(--accent);
-    transform: translateY(-3px);
+    transform: translateY(-5px);
 }
 
 .num {
     display: block;
-    font-size: 0.75rem;
+    font-size: clamp(1.2rem, 1.8vw, 1.85rem);
     color: var(--sub-muted);
-    font-weight: bold;
-    margin-bottom: 2px;
+    font-weight: 900;
+    margin-bottom: 6px;
 }
 
 .ans {
     display: block;
-    font-size: 2rem;
+    font-size: clamp(3.2rem, 5.8vw, 5.8rem);
     font-weight: 900;
+    line-height: 1;
     color: var(--text);
+    word-break: break-word;
 }
 
 h2 {
     text-align: center;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-}
-
-.text-responses {
-    max-width: 720px;
-    width: 100%;
-    background: var(--panel);
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    padding: 25px;
-    box-sizing: border-box;
-    display: none;
+    margin-bottom: clamp(22px, 2.8vw, 36px);
+    font-size: clamp(1.35rem, 2vw, 2rem);
+    font-weight: 900;
 }
 
 .text-responses ol {
-    padding-left: 20px;
+    padding-left: clamp(28px, 4vw, 48px);
     margin: 0;
+    font-size: clamp(1.4rem, 2vw, 2rem);
 }
 
 .text-responses li {
-    margin-bottom: 18px;
+    margin-bottom: 32px;
     color: var(--body-text);
-    line-height: 1.5;
+    line-height: 1.55;
     white-space: pre-line;
 }
 
 .text-responses strong {
     color: var(--text);
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
+    font-size: clamp(1.5rem, 2.2vw, 2.2rem);
 }
 </style>
 </head>
@@ -417,7 +464,7 @@ h2 {
 
         <div class="input-group">
             <label for="inputD">Section D: Short Answers (Separate items with a blank line; line 1 = question, line 2+ = answer)</label>
-            <textarea id="inputD" rows="4" placeholder="What is the question?&#10;Your answer goes right below it.&#10;&#10;Second question?&#10;Second answer."></textarea>
+            <textarea id="inputD" rows="5" placeholder="What is the question?&#10;Your answer goes right below it.&#10;&#10;Second question?&#10;Second answer."></textarea>
         </div>
 
         <div class="btn-row">
@@ -427,10 +474,24 @@ h2 {
     </div>
 </div>
 
-<!-- ANSWERS VIEW (NEW TAB / SCREEN) -->
+<!-- ANSWERS VIEW -->
 <div id="answersView" class="view-section hidden">
     <div class="top-bar">
-        <button class="action-btn secondary" onclick="goHome()">&larr; Back to Home</button>
+        <button class="action-btn secondary" onclick="goHome()">&larr; Home</button>
+
+        <div class="scroll-controls">
+            <label for="scrollRunSec" title="Seconds spent scrolling per cycle">Scroll (s):</label>
+            <input type="number" id="scrollRunSec" class="scroll-input" value="3" min="1" max="60" step="1">
+            
+            <label for="scrollPauseSec" title="Seconds paused between scrolls">Pause (s):</label>
+            <input type="number" id="scrollPauseSec" class="scroll-input" value="5" min="1" max="120" step="1">
+            
+            <label for="scrollSpeed" title="Scroll velocity">Speed:</label>
+            <input type="number" id="scrollSpeed" class="scroll-input" value="2" min="1" max="15" step="1">
+            
+            <button class="action-btn" id="scrollToggleBtn" onclick="toggleAutoScroll()">Start Loop</button>
+            <span class="scroll-status" id="scrollStatus">Off</span>
+        </div>
 
         <div class="theme-bar" id="themeBar">
             <button class="theme-btn active" data-theme="theme-dark" onclick="setTheme('theme-dark')">Dark</button>
@@ -447,17 +508,17 @@ h2 {
 
     <div class="table-wrapper" id="wrapA">
         <h2>Section A: Multiple Choice</h2>
-        <table id="tableA"></table>
+        <div class="matrix-grid" id="gridA"></div>
     </div>
 
     <div class="table-wrapper" id="wrapB">
         <h2>Section B: True or False</h2>
-        <table id="tableB"></table>
+        <div class="matrix-grid" id="gridB"></div>
     </div>
 
     <div class="table-wrapper" id="wrapC">
         <h2>Section C: Matching</h2>
-        <table id="tableC"></table>
+        <div class="matrix-grid" id="gridC"></div>
     </div>
 
     <div class="text-responses" id="wrapD">
@@ -467,7 +528,9 @@ h2 {
 </div>
 
 <script>
-const colsPerRow = 7;
+let autoScrollActive = false;
+let phaseTimer = null;
+let scrollAnimationId = null;
 
 function parseTokens(rawText) {
     const trimmed = rawText.trim();
@@ -482,10 +545,10 @@ function parseTokens(rawText) {
     return tokens.map((ans, idx) => [String(idx + 1), ans]);
 }
 
-function buildGrid(matrixData, targetTableId, wrapperId) {
-    const table = document.getElementById(targetTableId);
+function buildGrid(matrixData, targetGridId, wrapperId) {
+    const grid = document.getElementById(targetGridId);
     const wrapper = document.getElementById(wrapperId);
-    table.innerHTML = "";
+    grid.innerHTML = "";
 
     if (matrixData.length === 0) {
         wrapper.style.display = "none";
@@ -493,30 +556,16 @@ function buildGrid(matrixData, targetTableId, wrapperId) {
     }
 
     wrapper.style.display = "block";
-    const totalRows = Math.ceil(matrixData.length / colsPerRow);
 
-    for (let r = 0; r < totalRows; r++) {
-        const row = document.createElement("tr");
-
-        for (let c = 0; c < colsPerRow; c++) {
-            const index = r * colsPerRow + c;
-
-            if (index < matrixData.length) {
-                const cell = document.createElement("td");
-                cell.innerHTML = `
-                    <span class="num">#${matrixData[index][0]}</span>
-                    <span class="ans">${matrixData[index][1]}</span>
-                `;
-                row.appendChild(cell);
-            } else {
-                const emptyCell = document.createElement("td");
-                emptyCell.style.border = "none";
-                emptyCell.style.background = "transparent";
-                row.appendChild(emptyCell);
-            }
-        }
-        table.appendChild(row);
-    }
+    matrixData.forEach(([num, ans]) => {
+        const tile = document.createElement("div");
+        tile.className = "tile";
+        tile.innerHTML = `
+            <span class="num">#${num}</span>
+            <span class="ans">${ans}</span>
+        `;
+        grid.appendChild(tile);
+    });
 }
 
 function buildShortAnswers(rawText) {
@@ -553,20 +602,164 @@ function buildShortAnswers(rawText) {
 }
 
 function renderAll() {
-    buildGrid(parseTokens(document.getElementById("inputA").value), "tableA", "wrapA");
-    buildGrid(parseTokens(document.getElementById("inputB").value), "tableB", "wrapB");
-    buildGrid(parseTokens(document.getElementById("inputC").value), "tableC", "wrapC");
+    buildGrid(parseTokens(document.getElementById("inputA").value), "gridA", "wrapA");
+    buildGrid(parseTokens(document.getElementById("inputB").value), "gridB", "wrapB");
+    buildGrid(parseTokens(document.getElementById("inputC").value), "gridC", "wrapC");
     buildShortAnswers(document.getElementById("inputD").value);
 }
+
+function clearTimers() {
+    clearInterval(phaseTimer);
+    cancelAnimationFrame(scrollAnimationId);
+    phaseTimer = null;
+    scrollAnimationId = null;
+}
+
+function stopAutoScroll(finalLabel = "Off") {
+    autoScrollActive = false;
+    clearTimers();
+
+    const btn = document.getElementById("scrollToggleBtn");
+    const status = document.getElementById("scrollStatus");
+    btn.textContent = "Start Loop";
+    btn.classList.remove("secondary");
+    status.textContent = finalLabel;
+}
+
+// Phase 1: Pause and count down before scrolling
+function runPausePhase() {
+    if (!autoScrollActive) return;
+    clearTimers();
+
+    const status = document.getElementById("scrollStatus");
+    let remaining = Math.max(1, parseInt(document.getElementById("scrollPauseSec").value, 10) || 5);
+    status.textContent = `Paused (${remaining}s)`;
+
+    phaseTimer = setInterval(() => {
+        if (!autoScrollActive) return;
+        remaining -= 1;
+
+        if (remaining > 0) {
+            status.textContent = `Paused (${remaining}s)`;
+        } else {
+            clearInterval(phaseTimer);
+            phaseTimer = null;
+            runScrollPhase();
+        }
+    }, 1000);
+}
+
+// Phase 2: Scroll smoothly for the set duration, then loop back to pause
+function runScrollPhase() {
+    if (!autoScrollActive) return;
+    clearTimers();
+
+    const status = document.getElementById("scrollStatus");
+    let remaining = Math.max(1, parseInt(document.getElementById("scrollRunSec").value, 10) || 3);
+    status.textContent = `Scrolling (${remaining}s)`;
+
+    function step() {
+        if (!autoScrollActive) return;
+
+        const speed = Math.max(0.5, parseFloat(document.getElementById("scrollSpeed").value) || 2);
+        const canScrollDown = document.documentElement.scrollHeight > window.innerHeight + 2;
+        const atBottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
+
+        if (!canScrollDown) {
+            stopAutoScroll("Fits Screen");
+            return;
+        }
+
+        if (atBottom) {
+            clearTimers();
+            runBottomReturnPhase();
+            return;
+        }
+
+        window.scrollBy(0, speed * 0.6);
+        scrollAnimationId = requestAnimationFrame(step);
+    }
+
+    scrollAnimationId = requestAnimationFrame(step);
+
+    phaseTimer = setInterval(() => {
+        if (!autoScrollActive) return;
+        remaining -= 1;
+
+        if (remaining > 0) {
+            status.textContent = `Scrolling (${remaining}s)`;
+        } else {
+            clearTimers();
+            runPausePhase();
+        }
+    }, 1000);
+}
+
+// Phase 3: Pause briefly at the bottom so the last answers are readable, then return to top and restart
+function runBottomReturnPhase() {
+    if (!autoScrollActive) return;
+    clearTimers();
+
+    const status = document.getElementById("scrollStatus");
+    let remaining = Math.max(1, parseInt(document.getElementById("scrollPauseSec").value, 10) || 5);
+    status.textContent = `Bottom (${remaining}s)`;
+
+    phaseTimer = setInterval(() => {
+        if (!autoScrollActive) return;
+        remaining -= 1;
+
+        if (remaining > 0) {
+            status.textContent = `Bottom (${remaining}s)`;
+        } else {
+            clearTimers();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+            // Wait briefly for smooth return to top before resuming the pause-scroll cycle
+            setTimeout(() => {
+                if (autoScrollActive) {
+                    runPausePhase();
+                }
+            }, 650);
+        }
+    }, 1000);
+}
+
+function startAutoScroll() {
+    stopAutoScroll();
+    autoScrollActive = true;
+
+    const btn = document.getElementById("scrollToggleBtn");
+    btn.textContent = "Stop Loop";
+    btn.classList.add("secondary");
+
+    runPausePhase();
+}
+
+function toggleAutoScroll() {
+    if (autoScrollActive) {
+        stopAutoScroll("Off");
+    } else {
+        startAutoScroll();
+    }
+}
+
+// Stop loop immediately if user manually scrolls or touches the screen
+["wheel", "touchstart"].forEach(evt => {
+    window.addEventListener(evt, () => {
+        if (autoScrollActive) stopAutoScroll("Off");
+    }, { passive: true });
+});
 
 function openAnswersView() {
     renderAll();
     document.getElementById("homeView").classList.add("hidden");
     document.getElementById("answersView").classList.remove("hidden");
     window.scrollTo(0, 0);
+    startAutoScroll();
 }
 
 function goHome() {
+    stopAutoScroll("Off");
     document.getElementById("answersView").classList.add("hidden");
     document.getElementById("homeView").classList.remove("hidden");
     window.scrollTo(0, 0);
