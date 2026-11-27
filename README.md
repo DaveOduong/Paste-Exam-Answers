@@ -1,66 +1,90 @@
 # Dynamic Exam Answer Key Matrix
 
-A browser-based application designed to organize examination answers into a clean, numbered visual matrix. It allows users to paste answers from different examination sections and view them in a separate, customizable results screen.
+A simple, responsive web application for displaying exam answers in a large, easy-to-read grid. It allows users to paste answers, organize them into sections, and view them in a dedicated answer display screen.
+<img width="1822" height="891" alt="image" src="https://github.com/user-attachments/assets/30986329-096d-473a-a911-3734ef0bb421" />
+<img width="1822" height="765" alt="image" src="https://github.com/user-attachments/assets/b1e76efc-5a28-4da9-ad2d-176755a91d94" />
+
+
 
 ## Features
 
-- **Multiple Choice (Section A):** Displays answers in a numbered grid.
-- **True or False (Section B):** Organizes T/F answers into a visual matrix.
-- **Matching (Section C):** Displays matching answers in a numbered grid.
-- **Short Answers (Section D):** Displays questions alongside their corresponding answers.
-- **Live Rendering:** Automatically processes pasted or typed answers.
-- **Separate Views:** Provides a Home screen for entering answers and an Answers screen for viewing results.
-- **Theme Customization:** Supports Dark, Light, and seven ROYGBIV colour themes.
-- **Navigation:** Allows users to move between the Home and Answers screens.
-- **Clear Function:** Clears all input fields.
-- **Responsive Interface:** Features a modern, clean design.
+- **Four answer sections:**
+  - Section A – Multiple Choice
+  - Section B – True or False
+  - Section C – Matching
+  - Section D – Short Answers
+- **Automatic answer numbering** when generating the answer grid.
+- **Large responsive answer cards** arranged in a dynamic grid.
+- **Nine colour themes:** Dark, Light, Red, Orange, Yellow, Green, Blue, Indigo, and Violet.
+- **Automatic scrolling loop** when opening the answers screen.
+- **Customizable scrolling controls** for scroll duration, pause duration, and speed.
+- **Manual scrolling detection:** Using the mouse wheel or touching the screen stops automatic scrolling.
+- **Separate Home and Answers screens.**
+- **Clear button** to remove all entered answers.
+- **Sticky top navigation and controls** on the Answers screen.
 
-## Technologies Used
+## How to Use
 
-- HTML5 – Application structure.
-- CSS3 – Styling, layouts, animations, and colour themes.
-- JavaScript – Answer processing, dynamic rendering, and navigation.
+1. Open the application in a web browser.
+2. Paste your answers into the appropriate sections.
+3. Click **View Answers** to generate the answer display.
+4. Use the theme buttons to change the appearance.
+5. Use the scrolling controls to adjust how the answers move.
+6. Click **Home** to return to the input screen.
 
-## How to Run
+## Input Format
 
-1. Download or clone the project.
-2. Locate the `index.html` file.
-3. Open it using a modern web browser.
-4. Paste your examination answers into the appropriate sections.
-5. Click **View Answers** to display the generated matrix.
-6. Use the theme buttons to customize the appearance.
-7. Click **Back to Home** to edit your answers.
+### Sections A, B and C
 
-## Input Examples
-<img width="453" height="395" alt="image" src="https://github.com/user-attachments/assets/d637c153-ed6d-4213-82f5-5247086ad78e" />
+Answers can be separated using spaces, commas, semicolons, or new lines.
 
+Example:
 
-<img width="485" height="329" alt="image" src="https://github.com/user-attachments/assets/008ab52a-af9c-435d-8a42-c282ca148bb0" />
-
-
-### Section A – Multiple Choice
 ```text
-A B C D A B C
+1. A
+2. B
+3. C
+4. D
+5. A
 ```
 
-### Section B – True or False
-```text
-T F T T F T
-```
-
-### Section C – Matching
-```text
-H G J A B C
-```
+The application automatically numbers the displayed answers.
 
 ### Section D – Short Answers
-```text
-What is software engineering?
-The systematic application of engineering principles to software development.
 
-What is debugging?
-The process of identifying and fixing errors in a program.
+Separate each question and answer using a blank line.
+
+The first line represents the question, while the following lines contain the answer.
+
+Example:
+
+```text
+1. What is software engineering?
+Software engineering is the systematic application of engineering principles to software development.
+
+2. What is debugging?
+Debugging is the process of identifying and correcting errors in a program.
 ```
+
+## Automatic Scrolling Controls
+
+The Answers screen provides three adjustable settings:
+
+| Setting | Description |
+|---|---|
+| Scroll (s) | Determines how long the page scrolls. |
+| Pause (s) | Determines how long the page pauses between scrolling phases. |
+| Speed | Controls the scrolling speed. |
+
+The scrolling cycle works as follows:
+
+1. Pause before scrolling.
+2. Scroll smoothly down the page.
+3. Pause at the bottom.
+4. Return smoothly to the top.
+5. Repeat the cycle.
+
+The loop can be started or stopped manually. It also stops when the user manually scrolls or touches the screen.
 
 ## Project Structure
 
@@ -70,24 +94,43 @@ Dynamic-Exam-Answer-Key-Matrix/
 └── index.html
 ```
 
-## Requirements
+The entire application is contained in a single HTML file, including its CSS styling and JavaScript functionality.
 
-- Modern web browser.
-- No installation required.
-- No external libraries or frameworks.
-- No internet connection required.
+## Technologies Used
 
-## Core JavaScript Functions
+- **HTML5** – Application structure and input fields.
+- **CSS3** – Responsive layouts, answer cards, themes, and styling.
+- **JavaScript** – Answer processing, grid generation, navigation, and automatic scrolling.
 
-- `parseTokens()` – Processes and numbers pasted answers.
-- `buildGrid()` – Generates the answer matrices.
-- `buildShortAnswers()` – Organizes short-answer questions and responses.
-- `renderAll()` – Updates all generated results.
-- `openAnswersView()` – Opens the results screen.
-- `goHome()` – Returns to the input screen.
-- `setTheme()` – Changes the application's colour theme.
-- `clearAll()` – Clears all entered answers.
+## Installation and Setup
+
+1. Download or clone the project.
+2. Open the project folder.
+3. Open `index.html` in any modern web browser.
+4. Start entering your exam answers.
+
+No additional installation, external libraries, or internet connection is required.
+
+## Main JavaScript Functions
+
+| Function | Purpose |
+|---|---|
+| `parseTokens()` | Processes and organizes pasted answers. |
+| `buildGrid()` | Generates the answer cards. |
+| `buildShortAnswers()` | Displays questions and their answers. |
+| `renderAll()` | Generates all answer sections. |
+| `startAutoScroll()` | Starts the automatic scrolling loop. |
+| `stopAutoScroll()` | Stops automatic scrolling. |
+| `toggleAutoScroll()` | Starts or stops the scrolling loop. |
+| `setTheme()` | Changes the application theme. |
+| `openAnswersView()` | Opens the generated answer display. |
+| `goHome()` | Returns to the input screen. |
+| `clearAll()` | Clears all entered answers. |
+
+## Purpose
+
+The project is designed to make reviewing examination answers easier by presenting them in a clear, organized, and visually accessible format. The automatic scrolling feature is particularly useful when displaying large answer keys without requiring constant manual scrolling.
 
 ## License
 
-Free for educational and personal use.
+This project is available for educational and personal use.
